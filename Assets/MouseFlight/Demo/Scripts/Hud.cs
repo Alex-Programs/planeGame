@@ -4,10 +4,11 @@
 //
 
 using UnityEngine;
+using Mirror;
 
 namespace MFlight.Demo
 {
-    public class Hud : MonoBehaviour
+    public class Hud :  MonoBehaviour
     {
         [Header("Components")]
         [SerializeField] private MouseFlightController mouseFlight = null;
@@ -17,6 +18,14 @@ namespace MFlight.Demo
         [SerializeField] private RectTransform mousePos = null;
 
         private Camera playerCam = null;
+
+        void SetIsPlayerStatus(bool isPlayer)
+        {
+            if (isPlayer == false)
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void Awake()
         {

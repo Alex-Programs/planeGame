@@ -4,6 +4,7 @@
 //
 
 using UnityEngine;
+using Mirror;
 
 namespace MFlight
 {
@@ -15,7 +16,7 @@ namespace MFlight
     {
         [Header("Components")]
         [SerializeField] [Tooltip("Transform of the aircraft the rig follows and references")]
-        private Transform aircraft = null;
+        public Transform aircraft = null;
         [SerializeField] [Tooltip("Transform of the object the mouse rotates to generate MouseAim position")]
         private Transform mouseAim = null;
         [SerializeField] [Tooltip("Transform of the object on the rig which the camera is attached to")]
@@ -48,6 +49,16 @@ namespace MFlight
         /// Useful for drawing a crosshair to aim fixed forward guns with, or to indicate what
         /// direction the aircraft is pointed.
         /// </summary>
+        /// 
+
+        void SetIsPlayerStatus(bool isPlayer)
+        {
+            if (isPlayer == false)
+            {
+                Destroy(gameObject);
+            }
+        }
+
         public Vector3 BoresightPos
         {
             get
@@ -102,6 +113,9 @@ namespace MFlight
                 UpdateCameraPos();
 
             RotateRig();
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         private void FixedUpdate()

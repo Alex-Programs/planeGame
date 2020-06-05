@@ -3,6 +3,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 //
 
+using System.Diagnostics;
 using UnityEngine;
 
 namespace MFlight.Demo
@@ -21,7 +22,6 @@ namespace MFlight.Demo
         [SerializeField] private MouseFlightController controller = null;
 
         [Header("Physics")]
-        [Tooltip("Force to push plane forwards with")] public float thrust = 100f;
         [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(90f, 25f, 45f);
         [Tooltip("Multiplier for all forces")] public float forceMult = 1000f;
 
@@ -43,12 +43,24 @@ namespace MFlight.Demo
         private bool rollOverride = false;
         private bool pitchOverride = false;
 
+        //ALEX CHANGE - set up scrollwheel vars
+        float mouseScrollScale;
+        float thrust;
+        public float minimumThrust;
+        public float maximumThrust;
+
+        public void SetParameters(MouseFlightController _controller)
+        {
+            UnityEngine.Debug.Log("Setting rig");
+            controller = _controller;
+        }
+
         private void Awake()
         {
             rigid = GetComponent<Rigidbody>();
 
             if (controller == null)
-                Debug.LogError(name + ": Plane - Missing reference to MouseFlightController!");
+                UnityEngine.Debug.LogError(name + ": Plane - Missing reference to MouseFlightController!");
         }
 
         private void Update()
@@ -82,6 +94,21 @@ namespace MFlight.Demo
             yaw = autoYaw;
             pitch = (pitchOverride) ? keyboardPitch : autoPitch;
             roll = (rollOverride) ? keyboardRoll : autoRoll;
+            
+            // ALEX CHANGE - Allow thrust and movement changes with the scroll wheel
+
+            mouseScrollScale = mouseScrollScale + Input.mouseScrollDelta.y;
+
+            thrust = 50f * mouseScrollScale;
+            if (thrust < minimumThrust)
+            {
+                thrust = minimumThrust;
+            }
+            if (thrust > maximumThrust)
+            {
+                thrust = maximumThrust;
+            }
+            UnityEngine.Debug.Log(thrust.ToString());
         }
 
         private void RunAutopilot(Vector3 flyTarget, out float yaw, out float pitch, out float roll)
@@ -106,6 +133,10 @@ namespace MFlight.Demo
             // zero. Note this does not handle for the case where the target is directly behind.
             yaw = Mathf.Clamp(localFlyTarget.x, -1f, 1f);
             pitch = -Mathf.Clamp(localFlyTarget.y, -1f, 1f);
+
+            //ALEX CHANGE - Modify pitch and yaw based on speed
+            yaw = 1f * yaw / (thrust / 250);
+            pitch = 1f * pitch / (thrust / 250);
 
             // ====================
             // ROLL
