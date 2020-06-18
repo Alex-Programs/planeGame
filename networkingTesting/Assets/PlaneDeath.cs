@@ -43,6 +43,8 @@ public class PlaneDeath : NetworkBehaviour
         transform.position = new Vector3(0, 600, 0);
         transform.rotation = startRotation;
 
+        this.GetComponent<PlaneController>().thrust = this.GetComponent<PlaneController>().startingThrust;
+
         doReenableTrailsNextFrame = true;
 
         deathMessage.SetActive(true);
@@ -74,7 +76,7 @@ public class PlaneDeath : NetworkBehaviour
             doReenableTrailsNextFrame = false;
         }
 
-        if (transform.position.x > 5500 | transform.position.x < -5500 | transform.position.y < 0 | transform.position.y > 5500 | transform.position.z < -5500 | transform.position.z > 5500)
+        if (transform.position.x > 9000 | transform.position.x < -9000 | transform.position.y < 0 | transform.position.y > 9000 | transform.position.z < -9000 | transform.position.z > 9000)
         {
             Die();
         }

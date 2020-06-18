@@ -1,4 +1,5 @@
 ﻿using Mirror;
+using Mirror.Websocket;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ public class CustomNetworkManager : NetworkManager
 
     public GameObject dedicatedServerBox;
 
+    public static string serverIP;
+
     public override void Awake()
     {
         disconnectBox.SetActive(false);
@@ -21,13 +24,14 @@ public class CustomNetworkManager : NetworkManager
 
     public void StartHosting()
     {
+        serverIP = "deleteThis";
         base.StartHost();
     }
 
     public void JoinMatch()
     {
         base.networkAddress = ipBox.text; //"192.168.1.91"; //new Uri(ipBox.text.ToString(), UriKind.RelativeOrAbsolute);
-
+        serverIP = ipBox.text;
         Debug.Log(base.networkAddress);
 
         base.StartClient();

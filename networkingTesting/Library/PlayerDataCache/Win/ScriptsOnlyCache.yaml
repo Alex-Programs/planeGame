@@ -9,6 +9,7 @@ ScriptsOnlyBuild:
     - MFlight.Demo.PlaneController
     - MFlight.MouseFlightController
     - MainMenuShooting
+    - PingCounter
     - PlaneDeath
     - PlaneShooting
     - PlayerConnectionObject
@@ -17,8 +18,6 @@ ScriptsOnlyBuild:
     - cameraManager
     Mirror.Components.dll:
     - Mirror.NetworkTransform
-    Mirror.Editor.dll:
-    - Mirror.NetworkBehaviourInspector
     Mirror.dll:
     - Mirror.NetworkIdentity
     - Mirror.TelepathyTransport
@@ -28,6 +27,8 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEditor.UI.dll:
+    - UnityEditor.UI.TextEditor
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -124,6 +125,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13706}
     - Class: 114
       Script: {instanceID: 13728}
+    - Class: 114
+      Script: {instanceID: 62688}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1069,6 +1072,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 64d9b314f0b2c429a886d45f2798347a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PingCounter
   platform: 5
   scenePathNames:
   - Assets/Scenes/Main/Main Scene.unity

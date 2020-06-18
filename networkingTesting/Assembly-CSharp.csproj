@@ -73,8 +73,13 @@
     <Compile Include="Assets\ForceField.cs" />
     <Compile Include="Assets\ForceFieldReply.cs" />
     <Compile Include="Assets\MainMenuShooting.cs" />
+    <Compile Include="Assets\Marching Cubes\Chunk.cs" />
+    <Compile Include="Assets\Marching Cubes\GameData.cs" />
+    <Compile Include="Assets\Marching Cubes\SaveMeshInEditor.cs" />
+    <Compile Include="Assets\Marching Cubes\WorldGenerator.cs" />
     <Compile Include="Assets\MouseFlight\Demo\Scripts\Hud.cs" />
     <Compile Include="Assets\MouseFlight\Scripts\MouseFlightController.cs" />
+    <Compile Include="Assets\PingCounter.cs" />
     <Compile Include="Assets\PlaneController.cs" />
     <Compile Include="Assets\PlaneDeath.cs" />
     <Compile Include="Assets\PlaneShooting.cs" />
