@@ -18,6 +18,8 @@ namespace MFlight.Demo
 
         public GameObject toFarMessage;
 
+        public ParticleSystem exhaust;
+
         [Header("Components")]
         [SerializeField] private MouseFlightController controller = null;
 
@@ -95,9 +97,9 @@ namespace MFlight.Demo
 
             float distanceToStart = Vector3.Distance(Vector3.zero, transform.position);
 
-            if (distanceToStart > 5000)
+            if (distanceToStart > 8000)
             {
-                distanceFromBorder = distanceToStart - 5000;
+                distanceFromBorder = distanceToStart - 8000;
 
                 toFarMessage.SetActive(true);
 
@@ -151,6 +153,10 @@ namespace MFlight.Demo
                     thrust = minimumThrust;
                 }
             }
+
+            exhaust.startLifetime = thrust / 2000;
+            exhaust.startSpeed = thrust / 100;
+            exhaust.emissionRate = 16;
         }
 
         private void RunAutopilot(Vector3 flyTarget, out float yaw, out float pitch, out float roll)

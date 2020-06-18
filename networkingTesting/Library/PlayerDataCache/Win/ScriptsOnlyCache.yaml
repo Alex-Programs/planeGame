@@ -27,8 +27,6 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
-    UnityEditor.UI.dll:
-    - UnityEditor.UI.TextEditor
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -61,8 +59,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
-    - Class: 64
-      Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
     - Class: 81
@@ -90,43 +86,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12402}
     - Class: 114
-      Script: {instanceID: 12456}
+      Script: {instanceID: 12458}
     - Class: 114
-      Script: {instanceID: 12516}
+      Script: {instanceID: 12518}
     - Class: 114
-      Script: {instanceID: 12562}
+      Script: {instanceID: 12564}
     - Class: 114
-      Script: {instanceID: 12572}
+      Script: {instanceID: 12574}
     - Class: 114
-      Script: {instanceID: 12662}
+      Script: {instanceID: 12664}
     - Class: 114
-      Script: {instanceID: 12668}
+      Script: {instanceID: 12670}
     - Class: 114
-      Script: {instanceID: 12692}
+      Script: {instanceID: 12694}
     - Class: 114
-      Script: {instanceID: 12764}
+      Script: {instanceID: 12766}
     - Class: 114
-      Script: {instanceID: 12898}
+      Script: {instanceID: 12906}
     - Class: 114
-      Script: {instanceID: 12920}
+      Script: {instanceID: 12928}
     - Class: 114
-      Script: {instanceID: 13240}
+      Script: {instanceID: 13248}
     - Class: 114
-      Script: {instanceID: 13254}
+      Script: {instanceID: 13262}
     - Class: 114
-      Script: {instanceID: 13294}
+      Script: {instanceID: 13302}
     - Class: 114
-      Script: {instanceID: 13338}
+      Script: {instanceID: 13346}
     - Class: 114
-      Script: {instanceID: 13470}
+      Script: {instanceID: 13478}
     - Class: 114
-      Script: {instanceID: 13690}
+      Script: {instanceID: 13682}
     - Class: 114
-      Script: {instanceID: 13706}
+      Script: {instanceID: 13700}
     - Class: 114
-      Script: {instanceID: 13728}
+      Script: {instanceID: 13716}
     - Class: 114
-      Script: {instanceID: 62688}
+      Script: {instanceID: 13738}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -552,7 +548,7 @@ ScriptsOnlyBuild:
     className: BasicAuthenticator
   - hash:
       serializedVersion: 2
-      Hash: 1158a50bd20f79fad6ca3ff21c1b95a1
+      Hash: 8796301e56bd49120bb160f80602590e
     assemblyName: Assembly-CSharp.dll
     namespaceName: MFlight.Demo
     className: PlaneController
@@ -688,6 +684,18 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
     className: NetworkRoomPlayer
+  - hash:
+      serializedVersion: 2
+      Hash: 60b2454c10bc20fd378348454e3e6864
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WorldGenerator
+  - hash:
+      serializedVersion: 2
+      Hash: 9c6c0699b07da86c15a9bedb6f5775a5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SaveMeshInEditor
   - hash:
       serializedVersion: 2
       Hash: a6430125f9e3bd1689cbfbb118b1a0ea
@@ -1002,6 +1010,12 @@ ScriptsOnlyBuild:
     className: Health
   - hash:
       serializedVersion: 2
+      Hash: 78c41277a9bd3a655b472efae5e4b8a1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PingCounter
+  - hash:
+      serializedVersion: 2
       Hash: e48a49f67b87d40afa66da9f2991f899
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.Tanks
@@ -1072,12 +1086,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 64d9b314f0b2c429a886d45f2798347a
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PingCounter
   platform: 5
   scenePathNames:
   - Assets/Scenes/Main/Main Scene.unity

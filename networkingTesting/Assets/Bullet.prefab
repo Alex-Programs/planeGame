@@ -128,8 +128,8 @@ TrailRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 5
-    numCapVertices: 5
+    numCornerVertices: 0
+    numCapVertices: 0
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
@@ -243,7 +243,6 @@ MonoBehaviour:
   shotTime: 0
   createdby: {fileID: 0}
   trail: {fileID: 2757800777343318349}
-  colour: {r: 1, g: 1, b: 1, a: 1}
   BulletID: 0
 --- !u!114 &2161611196301315146
 MonoBehaviour:

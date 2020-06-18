@@ -76,7 +76,7 @@ public class PlaneDeath : NetworkBehaviour
             doReenableTrailsNextFrame = false;
         }
 
-        if (transform.position.x > 9000 | transform.position.x < -9000 | transform.position.y < 0 | transform.position.y > 9000 | transform.position.z < -9000 | transform.position.z > 9000)
+        if (transform.position.x > 12000 | transform.position.x < -12000 | transform.position.y < 0 | transform.position.y > 12000 | transform.position.z < -12000 | transform.position.z > 12000)
         {
             Die();
         }
