@@ -154,9 +154,17 @@ namespace MFlight.Demo
                 }
             }
 
-            exhaust.startLifetime = thrust / 2000;
-            exhaust.startSpeed = thrust / 100;
-            exhaust.emissionRate = 16;
+            ParticleSystem.MainModule main = exhaust.main;
+            ParticleSystem.ShapeModule shape = exhaust.shape;
+            ParticleSystem.EmissionModule emission = exhaust.emission;
+
+            main.startLifetime = thrust / 2000;
+            main.startSpeed = thrust / 100;
+            emission.rateOverTime = 32;
+            shape.angle = 0.00175f * thrust;
+            shape.radius = 0.00005f * thrust;
+
+            main.startColor = Color.Lerp(Color.blue, Color.magenta, thrust / 1000);
         }
 
         private void RunAutopilot(Vector3 flyTarget, out float yaw, out float pitch, out float roll)
