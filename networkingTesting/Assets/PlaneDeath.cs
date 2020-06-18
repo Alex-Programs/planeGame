@@ -17,9 +17,16 @@ public class PlaneDeath : NetworkBehaviour
 
     Quaternion startRotation;
 
+    public GameObject deathMessage;
+
+    float closeDeathMessageTime = 0;
+
+    public float deathMessageShowTime;
+
     public void Start()
     {
         startRotation = this.transform.rotation;
+        deathMessage.SetActive(false);
     }
 
     void Die()
@@ -37,10 +44,17 @@ public class PlaneDeath : NetworkBehaviour
         transform.rotation = startRotation;
 
         doReenableTrailsNextFrame = true;
+
+        deathMessage.SetActive(true);
+        closeDeathMessageTime = Time.time + deathMessageShowTime;
     }
 
     public void Update()
     {
+        if (Time.time > closeDeathMessageTime)
+        {
+            deathMessage.SetActive(false);
+        }
         externalAuthority = hasAuthority;
 
         if (DoDieNextFrame)

@@ -17,6 +17,8 @@ ScriptsOnlyBuild:
     - cameraManager
     Mirror.Components.dll:
     - Mirror.NetworkTransform
+    Mirror.Editor.dll:
+    - Mirror.NetworkBehaviourInspector
     Mirror.dll:
     - Mirror.NetworkIdentity
     - Mirror.TelepathyTransport
@@ -703,7 +705,7 @@ ScriptsOnlyBuild:
     className: SignalReceiver
   - hash:
       serializedVersion: 2
-      Hash: f23df310b8f300f137c4f8f8dd38caec
+      Hash: a9dd0fc8ae8a66d70fdbd73aa48b5066
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlaneDeath
