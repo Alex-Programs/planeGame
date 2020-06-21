@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using UnityEngine.Experimental.GlobalIllumination;
+using Mirror.Examples.Basic;
 
 public class bulletManager : NetworkBehaviour
 {
@@ -14,6 +16,10 @@ public class bulletManager : NetworkBehaviour
 
     public float BulletID;
 
+    public Light lightB;
+    public GameObject lightGOB;
+    Color colour;
+
     public void Start()
     {
         shotTime = Time.time;
@@ -23,7 +29,9 @@ public class bulletManager : NetworkBehaviour
 
     public void SetColour()
     {
-        trail.startColor = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        colour = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        lightB.color = colour;
+        trail.startColor = colour;
         trail.startWidth = Random.Range(0, 1);
         trail.endWidth = Random.Range(2.5f, 6f);
     }
@@ -36,6 +44,14 @@ public class bulletManager : NetworkBehaviour
         if (distance > 15556)
         {
             NetworkServer.Destroy(gameObject);
+        }
+
+        if (transform.position.y > 2048)
+        {
+            lightGOB.SetActive(false);
+        } else
+        {
+            lightGOB.SetActive(true);
         }
     }
 

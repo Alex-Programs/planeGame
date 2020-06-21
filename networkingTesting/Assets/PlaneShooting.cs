@@ -64,6 +64,7 @@ public class PlaneShooting : NetworkBehaviour
             gunHeat = gunOverloadLimit;
         }
         alpha = (gunHeat / gunOverloadLimit) * 255;
+        alpha = alpha / 2;
 
         heatMarker.GetComponent<RawImage>().color = new Color32(255, 0, 0, (byte)alpha);
         heatMarker.GetComponent<Transform>().localScale = new Vector3(alpha / 255, alpha / 255, alpha / 255);

@@ -58,7 +58,7 @@ public class PingCounter : MonoBehaviour
         {
             Ping ping = new Ping(target);
 
-            yield return new WaitForSeconds(1f);
+            //yield return new WaitForSeconds(0.1f);
             while (!ping.isDone) yield return null;
 
             _pingTime.Add(ping.time);

@@ -72,6 +72,9 @@
     <Compile Include="Assets\CustomNetworkManager\SpawnedPlanePrefabScript.cs" />
     <Compile Include="Assets\ForceField.cs" />
     <Compile Include="Assets\ForceFieldReply.cs" />
+    <Compile Include="Assets\LockingSystem\LockHitReceiver.cs" />
+    <Compile Include="Assets\LockingSystem\LockSend.cs" />
+    <Compile Include="Assets\LockingSystem\LockSound.cs" />
     <Compile Include="Assets\MainMenuShooting.cs" />
     <Compile Include="Assets\Marching Cubes\Chunk.cs" />
     <Compile Include="Assets\Marching Cubes\GameData.cs" />
@@ -84,6 +87,9 @@
     <Compile Include="Assets\PlaneDeath.cs" />
     <Compile Include="Assets\PlaneShooting.cs" />
     <Compile Include="Assets\PlayerConnectionObject.cs" />
+    <Compile Include="Assets\QualityManager.cs" />
+    <Compile Include="Assets\QualityMarker.cs" />
+    <Compile Include="Assets\Reticle.cs" />
     <Compile Include="Assets\bulletManager.cs" />
     <Compile Include="Assets\bulletProp.cs" />
     <Compile Include="Assets\cameraManager.cs" />

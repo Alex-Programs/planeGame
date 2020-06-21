@@ -5,19 +5,23 @@ ScriptsOnlyBuild:
     - CleanUpMenuObjects
     - CustomNetworkManager
     - ForceFieldReply
+    - LockHitReceiver
+    - LockSend
     - MFlight.Demo.Hud
     - MFlight.Demo.PlaneController
     - MFlight.MouseFlightController
     - MainMenuShooting
-    - PingCounter
     - PlaneDeath
     - PlaneShooting
     - PlayerConnectionObject
+    - Reticle
     - bulletManager
     - bulletProp
     - cameraManager
     Mirror.Components.dll:
     - Mirror.NetworkTransform
+    Mirror.Editor.dll:
+    - Mirror.NetworkBehaviourInspector
     Mirror.dll:
     - Mirror.NetworkIdentity
     - Mirror.TelepathyTransport
@@ -63,6 +67,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 96
       Script: {instanceID: 0}
     - Class: 104
@@ -70,59 +78,63 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11498}
+      Script: {instanceID: 11500}
     - Class: 114
-      Script: {instanceID: 11502}
+      Script: {instanceID: 11504}
     - Class: 114
-      Script: {instanceID: 11606}
+      Script: {instanceID: 11608}
     - Class: 114
-      Script: {instanceID: 11716}
+      Script: {instanceID: 11666}
     - Class: 114
-      Script: {instanceID: 11760}
+      Script: {instanceID: 11686}
     - Class: 114
-      Script: {instanceID: 12212}
+      Script: {instanceID: 11722}
     - Class: 114
-      Script: {instanceID: 12240}
+      Script: {instanceID: 11766}
     - Class: 114
-      Script: {instanceID: 12402}
+      Script: {instanceID: 12218}
     - Class: 114
-      Script: {instanceID: 12458}
+      Script: {instanceID: 12246}
     - Class: 114
-      Script: {instanceID: 12518}
+      Script: {instanceID: 12408}
     - Class: 114
-      Script: {instanceID: 12564}
+      Script: {instanceID: 12464}
     - Class: 114
-      Script: {instanceID: 12574}
+      Script: {instanceID: 12524}
     - Class: 114
-      Script: {instanceID: 12664}
+      Script: {instanceID: 12570}
+    - Class: 114
+      Script: {instanceID: 12580}
     - Class: 114
       Script: {instanceID: 12670}
     - Class: 114
-      Script: {instanceID: 12694}
+      Script: {instanceID: 12676}
     - Class: 114
-      Script: {instanceID: 12766}
+      Script: {instanceID: 12700}
     - Class: 114
-      Script: {instanceID: 12906}
+      Script: {instanceID: 12772}
     - Class: 114
-      Script: {instanceID: 12928}
+      Script: {instanceID: 12912}
     - Class: 114
-      Script: {instanceID: 13248}
+      Script: {instanceID: 12934}
     - Class: 114
-      Script: {instanceID: 13262}
+      Script: {instanceID: 13150}
     - Class: 114
-      Script: {instanceID: 13302}
+      Script: {instanceID: 13256}
     - Class: 114
-      Script: {instanceID: 13346}
+      Script: {instanceID: 13272}
     - Class: 114
-      Script: {instanceID: 13478}
+      Script: {instanceID: 13312}
     - Class: 114
-      Script: {instanceID: 13682}
+      Script: {instanceID: 13356}
     - Class: 114
-      Script: {instanceID: 13700}
+      Script: {instanceID: 13488}
     - Class: 114
-      Script: {instanceID: 13716}
+      Script: {instanceID: 13710}
     - Class: 114
-      Script: {instanceID: 13738}
+      Script: {instanceID: 13726}
+    - Class: 114
+      Script: {instanceID: 13748}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -134,6 +146,10 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -206,6 +222,12 @@ ScriptsOnlyBuild:
     className: NetworkTransform
   - hash:
       serializedVersion: 2
+      Hash: 7a76bc4bfd57ebb02e1ba4bcc156d117
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LockSend
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -222,6 +244,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.Additive
     className: PlayerController
+  - hash:
+      serializedVersion: 2
+      Hash: a8b54adc01ff3fcfe6cdf3ccc422da1f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Reticle
   - hash:
       serializedVersion: 2
       Hash: a5781dc71a671b1ad2b38de19f24b71f
@@ -548,7 +576,7 @@ ScriptsOnlyBuild:
     className: BasicAuthenticator
   - hash:
       serializedVersion: 2
-      Hash: 8796301e56bd49120bb160f80602590e
+      Hash: d328987301fde945f2269c329ee7d852
     assemblyName: Assembly-CSharp.dll
     namespaceName: MFlight.Demo
     className: PlaneController
@@ -794,6 +822,12 @@ ScriptsOnlyBuild:
     className: FallbackTransport
   - hash:
       serializedVersion: 2
+      Hash: 306633f1ef503368e7f5c1f2f38dc769
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LockHitReceiver
+  - hash:
+      serializedVersion: 2
       Hash: 8001a5f7502aab37e42206da015e6914
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -860,7 +894,7 @@ ScriptsOnlyBuild:
     className: NetworkLogSettings
   - hash:
       serializedVersion: 2
-      Hash: 37d921d0313e8ed2693abd49fd122cdf
+      Hash: 2e8f8bf608b0203b6914888bc947a4fc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: bulletManager

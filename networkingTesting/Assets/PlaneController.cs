@@ -3,7 +3,6 @@ using Mirror;
 using JetBrains.Annotations;
 using Mirror.Examples;
 using System.Runtime.CompilerServices;
-using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
 namespace MFlight.Demo
@@ -19,6 +18,8 @@ namespace MFlight.Demo
         public GameObject toFarMessage;
 
         public ParticleSystem exhaust;
+
+        public Light exhaustLight;
 
         [Header("Components")]
         [SerializeField] private MouseFlightController controller = null;
@@ -52,6 +53,8 @@ namespace MFlight.Demo
 
         private bool rollOverride = false;
         private bool pitchOverride = false;
+
+        
 
         public void Start()
         {
@@ -119,7 +122,7 @@ namespace MFlight.Demo
 
             thrustAdjusted = thrust / thrustDivider;
 
-            Debug.Log("Distance: " + distanceFromBorder.ToString() + " Thrust: " + thrust.ToString() + "Thrust divider: " + thrustDivider.ToString());
+            //Debug.Log("Distance: " + distanceFromBorder.ToString() + " Thrust: " + thrust.ToString() + "Thrust divider: " + thrustDivider.ToString());
 
             // Calculate the autopilot stick inputs.
             float autoYaw = 0f;
@@ -163,6 +166,9 @@ namespace MFlight.Demo
             emission.rateOverTime = 32;
             shape.angle = 0.00175f * thrust;
             shape.radius = 0.00005f * thrust;
+
+            exhaustLight.range = thrust / 500;
+            exhaustLight.intensity = thrust / 1000;
 
             main.startColor = Color.Lerp(Color.blue, Color.magenta, thrust / 1000);
         }
