@@ -11,6 +11,10 @@ public class PlaneShooting : NetworkBehaviour
     public Transform firePointThree;
 
     public GameObject BulletPrefab;
+
+    public GameObject MissilePrefab;
+    public Transform MissilePoint;
+
     public float BulletForce;
 
     float gunHeat;
@@ -39,12 +43,15 @@ public class PlaneShooting : NetworkBehaviour
 
     public float CentralSpread;
 
+    float nextMissileTime;
+
+    public float missileDelay;
+
     // Update is called once per frame
     void Update()
     {
         if (hasAuthority == false)
         {
-            Debug.Log("No authority in plane shooting, not running");
             return;
         }
 
@@ -99,35 +106,35 @@ public class PlaneShooting : NetworkBehaviour
             }
         }
 
-        if (Input.GetMouseButton(1) && Time.time > nextFireTime)
+        if (Input.GetMouseButton(1) && this.GetComponent<LockSend>().haveLock == true && Time.time > nextMissileTime)
         {
-            if (gunHeat < gunOverloadLimit)
-            {
-                CmdSpawnBullet(firePointOne.transform.position + (firePointOne.transform.forward), firePointOne.transform.rotation, gameObject.GetComponent<Rigidbody>().velocity.magnitude, BulletForce, spread / 2f);
-                gunHeat = gunHeat + 1;
-                lastShotTime = Time.time;
-            }
-            if (gunHeat < gunOverloadLimit)
-            {
-                CmdSpawnBullet(firePointTwo.transform.position + (firePointTwo.transform.forward), firePointTwo.transform.rotation, gameObject.GetComponent<Rigidbody>().velocity.magnitude, BulletForce, spread / 2f);
-                gunHeat = gunHeat + 1;
-                lastShotTime = Time.time;
-            }
+            Debug.Log("Shooting missile");
 
-
-            nextFireTime = Time.time + FireRate;
+            CmdSpawnMissile(MissilePoint.position, MissilePoint.rotation, 5f);
+            nextMissileTime = Time.time + missileDelay;
         }
+    }
 
-        if (Input.GetMouseButton(1) && Time.time > nextCentralFireTime)
-        {
-            if (gunHeat < gunOverloadLimit)
-            {
-                CmdSpawnBullet(firePointThree.transform.position + (firePointThree.transform.forward), firePointThree.transform.rotation, gameObject.GetComponent<Rigidbody>().velocity.magnitude, BulletForce, CentralSpread / 2f);
-                nextCentralFireTime = Time.time + CentralFireRate;
-                gunHeat = gunHeat + 1;
-                lastShotTime = Time.time;
-            }
-        }
+    [Command]
+    void CmdSpawnMissile(Vector3 loc, Quaternion direction, float force)
+    {
+        //running on the server
+        GameObject go = Instantiate(MissilePrefab, loc, direction);
+
+        //get rigidbody
+        Rigidbody rb = go.GetComponent<Rigidbody>();
+
+        //make them spread using random deviation
+        go.transform.rotation = direction;
+
+        //calculate impart force
+        float impartForce = force;
+        //add force to propel forwards
+        rb.AddForce(go.transform.forward * impartForce, ForceMode.Impulse);
+        //spawn and propagate to network clients
+
+        NetworkServer.Spawn(go);
+        go.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
     }
 
     [Command]

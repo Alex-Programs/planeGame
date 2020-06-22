@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using UnityEngine.UI;
 using MFlight.Demo;
 
 public class LockHitReceiver : NetworkBehaviour
 {
     public PlaneController controller;
-    bool isTargetLocked;
     float lastLockTime;
     public float delayBeforeEndLock;
     public GameObject lockedText;
+    public GameObject parent;
 
     bool checkAuthority()
     {
@@ -27,14 +28,6 @@ public class LockHitReceiver : NetworkBehaviour
     public void Update()
     {
         if (lastLockTime + delayBeforeEndLock > Time.time)
-        {
-            isTargetLocked = true;
-        } else
-        {
-            isTargetLocked = false;
-        }
-
-        if (isTargetLocked)
         {
             lockedText.SetActive(true);
         } else

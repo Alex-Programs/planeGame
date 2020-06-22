@@ -29,7 +29,7 @@ public class PlaneDeath : NetworkBehaviour
         deathMessage.SetActive(false);
     }
 
-    void Die()
+    public void Die()
     {
         if (hasAuthority == false)
         {
@@ -80,13 +80,15 @@ public class PlaneDeath : NetworkBehaviour
         {
             Die();
         }
+
+        
     }
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Bullet" | other.gameObject.tag == "Terrain")
+        if (other.gameObject.tag == "Bullet" | other.gameObject.tag == "Terrain" | other.gameObject.tag == "Missile")
         {
-            Debug.Log("Hit by bullet");
+            Debug.Log("# Dying - plane");
             DoDieNextFrame = true;
             trail.emitting = false;
             trail2.emitting = false;

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-using UnityEngine.Experimental.GlobalIllumination;
-using Mirror.Examples.Basic;
 
 public class bulletManager : NetworkBehaviour
 {

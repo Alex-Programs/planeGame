@@ -8,6 +8,7 @@ TagManager:
   - Terrain
   - RemoveOnSpawn
   - LockReceiver
+  - Missile
   layers:
   - Default
   - TransparentFX

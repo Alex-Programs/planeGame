@@ -3763,6 +3763,7 @@ MonoBehaviour:
   - {fileID: 3003426096657650951, guid: 27a48ed2c3ed7c74caf8bc8c41b49e80, type: 3}
   - {fileID: 7266991245821772671, guid: 9fe481146d39b3c40ac6cdc35c8b5b0a, type: 3}
   - {fileID: 7906481462061360160, guid: a56d280d35355d54fa56736cd4779854, type: 3}
+  - {fileID: 7266991245821772671, guid: a598e5f2004ef0d43a2b9841db0aac97, type: 3}
   ipBox: {fileID: 1643006271}
   disconnectBox: {fileID: 333496278}
   dedicatedServerBox: {fileID: 370870557}

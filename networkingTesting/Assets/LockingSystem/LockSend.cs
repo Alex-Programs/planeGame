@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using UnityEngine.UI;
+using MFlight.Demo;
 
 public class LockSend : NetworkBehaviour
 {
     public Transform firePoint;
-    float nextLockPulse;
-    public float pulseDelay;
-    public GameObject lockSuccesful;
-    bool haveLock;
-    float lastLockTime;
+    public GameObject lockTextBox;
 
-    public void Start()
-    {
-        lockSuccesful.SetActive(false);
-    }
+    public float LockTime;
+    bool FireSuccessful;
+    float lockAcummulator;
+    float lockTime;
+    public bool haveLock;
+    float lastFireSuccess = 0f;
+    public PlaneController plane;
+    public GameObject target;
+
     void Fire()
     {
         RaycastHit hit;
@@ -28,7 +31,9 @@ public class LockSend : NetworkBehaviour
                 hit.collider.gameObject.GetComponent<LockHitReceiver>().Hit();
                 if (hasAuthority)
                 {
-                    lastLockTime = Time.time;
+                    lastFireSuccess = Time.time;
+                    //fuck, that's a lot of abstraction
+                    target = hit.collider.gameObject.GetComponent<LockHitReceiver>().parent;
                 }
             }
         }
@@ -37,26 +42,42 @@ public class LockSend : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > nextLockPulse)
+        if (plane.inspectorAuthority == true)
         {
-            nextLockPulse = Time.time + pulseDelay;
-            Fire();
+            lockTextBox.SetActive(true);
+        }
+        else
+        {
+            lockTextBox.SetActive(false);
         }
 
-        if (Time.time > lastLockTime + pulseDelay + 0.1f)
+        Fire();
+        if (lastFireSuccess + 0.1f > Time.time)
         {
-            haveLock = false;
+            FireSuccessful = true;
         } else
+        {
+            FireSuccessful = false;
+        }
+        if (hasAuthority == false)
+        {
+            return;
+        }
+        if (FireSuccessful == true)
+        {
+            lockAcummulator = lockAcummulator + Time.deltaTime;
+            lockTextBox.GetComponent<Text>().text = "ACQUIRING TARGET LOCK";
+        } else
+        {
+            lockAcummulator = 0f;
+            lockTextBox.GetComponent<Text>().text = "NO TARGET LOCK";
+            haveLock = false;
+        }
+
+        if (lockAcummulator > LockTime)
         {
             haveLock = true;
-        }
-        
-        if (haveLock == true)
-        {
-            lockSuccesful.SetActive(true);
-        } else
-        {
-            lockSuccesful.SetActive(false);
+            lockTextBox.GetComponent<Text>().text = "LOCK ESTABLISHED. READY TO FIRE.";
         }
     }
 }

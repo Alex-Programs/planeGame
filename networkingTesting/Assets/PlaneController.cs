@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using Mirror;
 using JetBrains.Annotations;
-using Mirror.Examples;
 using System.Runtime.CompilerServices;
 using UnityEngine.UI;
 
@@ -73,6 +72,23 @@ namespace MFlight.Demo
 
         private void Update()
         {
+
+            ParticleSystem.MainModule main = exhaust.main;
+            ParticleSystem.ShapeModule shape = exhaust.shape;
+            ParticleSystem.EmissionModule emission = exhaust.emission;
+
+            //before the check so it syncs
+            main.startLifetime = thrust / 2000;
+            main.startSpeed = thrust / 100;
+            emission.rateOverTime = 32;
+            shape.angle = 0.00175f * thrust;
+            shape.radius = 0.00005f * thrust;
+
+            exhaustLight.range = thrust / 500;
+            exhaustLight.intensity = thrust / 1000;
+
+            main.startColor = Color.Lerp(Color.blue, Color.magenta, thrust / 1000);
+
             if (hasAuthority == false)
             {
                 Debug.Log("No authority in plane, not running");
@@ -156,21 +172,6 @@ namespace MFlight.Demo
                     thrust = minimumThrust;
                 }
             }
-
-            ParticleSystem.MainModule main = exhaust.main;
-            ParticleSystem.ShapeModule shape = exhaust.shape;
-            ParticleSystem.EmissionModule emission = exhaust.emission;
-
-            main.startLifetime = thrust / 2000;
-            main.startSpeed = thrust / 100;
-            emission.rateOverTime = 32;
-            shape.angle = 0.00175f * thrust;
-            shape.radius = 0.00005f * thrust;
-
-            exhaustLight.range = thrust / 500;
-            exhaustLight.intensity = thrust / 1000;
-
-            main.startColor = Color.Lerp(Color.blue, Color.magenta, thrust / 1000);
         }
 
         private void RunAutopilot(Vector3 flyTarget, out float yaw, out float pitch, out float roll)

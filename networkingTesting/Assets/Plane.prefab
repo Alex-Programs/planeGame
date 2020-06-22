@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8993500932879324413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'WARNING: HOSTILE LOCK DETECTED'
+  m_Text: 'WARNING: HOSTILE DETECTED.'
 --- !u!82 &8815791684999505885
 AudioSource:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 3003426096657651066}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &511951950078451047
 TrailRenderer:
@@ -416,7 +416,6 @@ GameObject:
   - component: {fileID: 5739514839107771801}
   - component: {fileID: 9202610840669712780}
   - component: {fileID: 3731631134055729885}
-  - component: {fileID: 2952992356344811713}
   m_Layer: 0
   m_Name: LockHitArea
   m_TagString: LockReceiver
@@ -436,7 +435,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 3003426096657651066}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5739514839107771801
 MonoBehaviour:
@@ -455,6 +454,7 @@ MonoBehaviour:
   controller: {fileID: 3003426096657651064}
   delayBeforeEndLock: 0.2
   lockedText: {fileID: 5366132062408246}
+  parent: {fileID: 3003426096657650951}
 --- !u!135 &9202610840669712780
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -479,23 +479,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1
-  m_Height: 3
+  m_Height: 2
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &2952992356344811713
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703333985686026315}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 1
-  m_Height: 3
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 1.24}
 --- !u!1 &2679997484256259664
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +590,7 @@ RectTransform:
   m_Children:
   - {fileID: 2749816114174083124}
   m_Father: {fileID: 3003426096657651066}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -818,7 +804,7 @@ Transform:
   - {fileID: 3003426097082512254}
   - {fileID: 3003426097471579470}
   m_Father: {fileID: 3003426096657651066}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &3003426095906749457
 CapsuleCollider:
@@ -1088,6 +1074,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 4.39, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children:
+  - {fileID: 9039592770447234091}
   - {fileID: 2530761259913653179}
   - {fileID: 3003426095906749468}
   - {fileID: 3003426096875062960}
@@ -1248,6 +1235,9 @@ MonoBehaviour:
   firePointThree: {fileID: 1909102484690853282}
   BulletPrefab: {fileID: 7266991245821772671, guid: 9fe481146d39b3c40ac6cdc35c8b5b0a,
     type: 3}
+  MissilePrefab: {fileID: 7266991245821772671, guid: a598e5f2004ef0d43a2b9841db0aac97,
+    type: 3}
+  MissilePoint: {fileID: 9039592770447234091}
   BulletForce: 8000
   gunOverloadLimit: 300
   gunCoolAmount: 50
@@ -1257,6 +1247,7 @@ MonoBehaviour:
   CentralFireRate: 0.025
   spread: 3
   CentralSpread: 0.75
+  missileDelay: 0.5
 --- !u!114 &2416650712443244626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1286,8 +1277,11 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   firePoint: {fileID: 1909102484690853282}
-  pulseDelay: 0.4
-  lockSuccesful: {fileID: 8973025600586115483}
+  lockTextBox: {fileID: 8973025600586115483}
+  LockTime: 5
+  haveLock: 0
+  plane: {fileID: 3003426096657651064}
+  target: {fileID: 0}
 --- !u!1 &3003426096848049558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,7 +1343,7 @@ Transform:
   - {fileID: 3003426096848049545}
   - {fileID: 3003426096047733317}
   m_Father: {fileID: 3003426096657651066}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3003426096875062961
 MonoBehaviour:
@@ -1531,6 +1525,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &3429746340842188125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9039592770447234091}
+  m_Layer: 0
+  m_Name: MissilePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9039592770447234091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3429746340842188125}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -14.8, z: 19.9}
+  m_LocalScale: {x: 0.125, y: 0.125, z: 0.125}
+  m_Children: []
+  m_Father: {fileID: 3003426096657651066}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3610607129852677510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,7 +1584,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 3003426096657651066}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &2323340322700828810
 TrailRenderer:
@@ -1788,7 +1812,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 3003426096657651066}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5500879540148388824
 GameObject:
@@ -6885,7 +6909,7 @@ RectTransform:
   - {fileID: 8993500932879324413}
   - {fileID: 6014307455204426755}
   m_Father: {fileID: 3003426096657651066}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6980,7 +7004,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 3003426096657651066}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8289032707496613932
 GameObject:
@@ -7011,7 +7035,7 @@ Transform:
   m_Children:
   - {fileID: 2047333929356472397}
   m_Father: {fileID: 3003426096657651066}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8973025600586115483
 GameObject:
@@ -7025,12 +7049,12 @@ GameObject:
   - component: {fileID: 2704061881641194478}
   - component: {fileID: 729383120510355145}
   m_Layer: 5
-  m_Name: HaveLock
+  m_Name: LockTextBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6014307455204426755
 RectTransform:
   m_ObjectHideFlags: 0
