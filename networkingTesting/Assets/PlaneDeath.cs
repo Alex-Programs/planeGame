@@ -125,7 +125,7 @@ public class PlaneDeath : NetworkBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Bullet" | other.gameObject.tag == "Terrain")
+        if (other.gameObject.tag == "Bullet" | other.gameObject.tag == "Terrain" | other.gameObject.tag == "Player")
         {
             Debug.Log("# Dying - plane");
             DoDieNextFrame = true;

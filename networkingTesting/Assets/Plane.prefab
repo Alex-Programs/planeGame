@@ -415,9 +415,6 @@ GameObject:
   - component: {fileID: 2530761259913653179}
   - component: {fileID: 5739514839107771801}
   - component: {fileID: 9202610840669712780}
-  - component: {fileID: 6054208158847665858}
-  - component: {fileID: 2582456285090336118}
-  - component: {fileID: 123851817394914917}
   m_Layer: 0
   m_Name: LockHitArea
   m_TagString: LockReceiver
@@ -468,46 +465,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &6054208158847665858
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703333985686026315}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.75
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &2582456285090336118
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703333985686026315}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &123851817394914917
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703333985686026315}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.7
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2679997484256259664
 GameObject:
@@ -1079,7 +1037,6 @@ GameObject:
   - component: {fileID: 3003426096657650950}
   - component: {fileID: -2229261238435779596}
   - component: {fileID: -6712288952376416117}
-  - component: {fileID: 3885606783774540215}
   - component: {fileID: 4868398615353273818}
   - component: {fileID: 2416650712443244626}
   - component: {fileID: 499907714484091434}
@@ -1231,20 +1188,6 @@ MonoBehaviour:
   deathMessageShowTime: 5
   explosionPrefab: {fileID: 7489305938228741170, guid: 76c97d361ca2b944aa5c4f7c0dfeb669,
     type: 3}
---- !u!114 &3885606783774540215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3003426096657650951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 694cedf7ba9208d4ab9cb94dfb824275, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
 --- !u!114 &4868398615353273818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1309,10 +1252,11 @@ MonoBehaviour:
   syncInterval: 0.1
   firePoint: {fileID: 1909102484690853282}
   lockTextBox: {fileID: 8973025600586115483}
-  LockTime: 5
+  LockTime: 6.5
   haveLock: 0
   plane: {fileID: 3003426096657651064}
   target: {fileID: 0}
+  minimumDistance: 3000
 --- !u!1 &3003426096848049558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,7 +1524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3429746340842188125}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -14.8, z: 19.9}
+  m_LocalPosition: {x: 0, y: -18.1, z: 46.6}
   m_LocalScale: {x: 0.125, y: 0.125, z: 0.125}
   m_Children: []
   m_Father: {fileID: 3003426096657651066}

@@ -63,4 +63,14 @@ public class Missile : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Bullet" | other.gameObject.tag == "Terrain")
+        {
+            //I can't create an explosion because apparently accessing network functions in a script where I imported them would be to much
+            NetworkServer.Destroy(gameObject);
+            Destroy(gameObject);
+        }
+    }
 }

@@ -13,11 +13,11 @@ public class LockSend : NetworkBehaviour
     public float LockTime;
     bool FireSuccessful;
     float lockAcummulator;
-    float lockTime;
     public bool haveLock;
     float lastFireSuccess = 0f;
     public PlaneController plane;
     public GameObject target;
+    public float minimumDistance;
 
     void Fire()
     {
@@ -28,6 +28,12 @@ public class LockSend : NetworkBehaviour
         {
             if (hit.collider.tag == "LockReceiver")
             {
+
+                if (hit.distance < minimumDistance)
+                {
+                    return;
+                }
+
                 hit.collider.gameObject.GetComponent<LockHitReceiver>().Hit();
                 if (hasAuthority)
                 {

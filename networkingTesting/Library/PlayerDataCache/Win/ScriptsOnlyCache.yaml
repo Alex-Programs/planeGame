@@ -24,8 +24,6 @@ ScriptsOnlyBuild:
     - selfDestruct
     Mirror.Components.dll:
     - Mirror.NetworkTransform
-    Mirror.Editor.dll:
-    - Mirror.NetworkBehaviourInspector
     Mirror.dll:
     - Mirror.NetworkIdentity
     - Mirror.TelepathyTransport
