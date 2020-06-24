@@ -24,7 +24,7 @@ public class bulletProp : MonoBehaviour
     public void Update()
     {
         float distance = Vector3.Distance(startLoc, transform.position);
-        if (distance > 6000)
+        if (distance > 12000)
         {
             Destroy(gameObject);
         }

@@ -94,6 +94,7 @@
     <Compile Include="Assets\bulletProp.cs" />
     <Compile Include="Assets\cameraManager.cs" />
     <Compile Include="Assets\mainMenuLoop.cs" />
+    <Compile Include="Assets\selfDestruct.cs" />
     <None Include="Assets\ScriptTemplates\51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" />
     <None Include="Assets\ScriptTemplates\53-Mirror__Network Observer-NewNetworkObserver.cs.txt" />
     <None Include="Assets\ScriptTemplates\56-Mirror__Network Discovery-NewNetworkDiscovery.cs.txt" />

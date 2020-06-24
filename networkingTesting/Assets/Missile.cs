@@ -1,8 +1,8 @@
-﻿using Mirror;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using Mirror;
 
 public class Missile : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class Missile : MonoBehaviour
     float lowestDistance;
     GameObject lowestGameObject;
     float dist;
-    float dieTime = Mathf.Infinity;
+    public float fuel = 100;
 
     public void Start()
     {
@@ -43,7 +43,10 @@ public class Missile : MonoBehaviour
     void FixedUpdate()
     {
         //this part does the turning
-        transform.LookAt(target.transform);
+        if (Vector3.Distance(transform.position, target.transform.position) > 500)
+        {
+            transform.LookAt(target.transform);
+        }
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
 
         Debug.Log("[]" + target.ToString());
@@ -51,16 +54,13 @@ public class Missile : MonoBehaviour
 
     public void Update()
     {
-        if (Time.time > dieTime)
+        fuel = fuel - Time.deltaTime;
+        Debug.Log("FUEL: " + fuel.ToString());
+
+        if (fuel < 0f)
         {
-            Debug.Log("Dying");
             NetworkServer.Destroy(gameObject);
             Destroy(gameObject);
         }
-    }
-
-    void OnCollisionEnter(Collision other)
-    {
-        dieTime = Time.time + 0.1f;
     }
 }

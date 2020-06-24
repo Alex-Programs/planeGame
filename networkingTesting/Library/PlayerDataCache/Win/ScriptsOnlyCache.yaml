@@ -21,8 +21,11 @@ ScriptsOnlyBuild:
     - bulletManager
     - bulletProp
     - cameraManager
+    - selfDestruct
     Mirror.Components.dll:
     - Mirror.NetworkTransform
+    Mirror.Editor.dll:
+    - Mirror.NetworkBehaviourInspector
     Mirror.dll:
     - Mirror.NetworkIdentity
     - Mirror.TelepathyTransport
@@ -105,43 +108,45 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12526}
     - Class: 114
-      Script: {instanceID: 12572}
+      Script: {instanceID: 12528}
     - Class: 114
-      Script: {instanceID: 12582}
+      Script: {instanceID: 12574}
     - Class: 114
-      Script: {instanceID: 12672}
+      Script: {instanceID: 12584}
     - Class: 114
-      Script: {instanceID: 12678}
+      Script: {instanceID: 12674}
     - Class: 114
-      Script: {instanceID: 12702}
+      Script: {instanceID: 12680}
     - Class: 114
-      Script: {instanceID: 12774}
+      Script: {instanceID: 12704}
     - Class: 114
-      Script: {instanceID: 12914}
+      Script: {instanceID: 12776}
     - Class: 114
-      Script: {instanceID: 12936}
+      Script: {instanceID: 12916}
     - Class: 114
-      Script: {instanceID: 13152}
+      Script: {instanceID: 12938}
     - Class: 114
-      Script: {instanceID: 13230}
+      Script: {instanceID: 13154}
     - Class: 114
-      Script: {instanceID: 13260}
+      Script: {instanceID: 13232}
     - Class: 114
-      Script: {instanceID: 13274}
+      Script: {instanceID: 13262}
     - Class: 114
-      Script: {instanceID: 13314}
+      Script: {instanceID: 13276}
     - Class: 114
-      Script: {instanceID: 13346}
+      Script: {instanceID: 13316}
     - Class: 114
-      Script: {instanceID: 13360}
+      Script: {instanceID: 13348}
     - Class: 114
-      Script: {instanceID: 13492}
+      Script: {instanceID: 13362}
     - Class: 114
-      Script: {instanceID: 13714}
+      Script: {instanceID: 13494}
     - Class: 114
-      Script: {instanceID: 13730}
+      Script: {instanceID: 13716}
     - Class: 114
-      Script: {instanceID: 13752}
+      Script: {instanceID: 13732}
+    - Class: 114
+      Script: {instanceID: 13754}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -547,7 +552,7 @@ ScriptsOnlyBuild:
     className: Tank
   - hash:
       serializedVersion: 2
-      Hash: 0ff62fc53dd6a8a5bf398da20b4010e6
+      Hash: d45f99f891e5bb0e760b092f92d21b4c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlaneShooting
@@ -587,6 +592,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Authenticators.dll
     namespaceName: Mirror.Authenticators
     className: BasicAuthenticator
+  - hash:
+      serializedVersion: 2
+      Hash: 20c9a74d659b6895cfdb5f4624ba8daa
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: selfDestruct
   - hash:
       serializedVersion: 2
       Hash: d328987301fde945f2269c329ee7d852
@@ -757,7 +768,7 @@ ScriptsOnlyBuild:
     className: SignalReceiver
   - hash:
       serializedVersion: 2
-      Hash: a9dd0fc8ae8a66d70fdbd73aa48b5066
+      Hash: e71753e01ea41be17003f0d9843ba4e7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlaneDeath
@@ -853,7 +864,7 @@ ScriptsOnlyBuild:
     className: NetworkRoomManagerExt
   - hash:
       serializedVersion: 2
-      Hash: ade9a5e77bac143966e06be31130b6cd
+      Hash: 30570e5f8724c9290747f9214395fdd0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Missile
@@ -1111,7 +1122,7 @@ ScriptsOnlyBuild:
     className: Slider
   - hash:
       serializedVersion: 2
-      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
+      Hash: 01f77dea48a712d3e5e1bdacbfc519e4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraRotator

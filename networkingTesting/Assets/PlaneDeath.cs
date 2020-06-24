@@ -5,6 +5,7 @@ using Mirror;
 using System.Security.Cryptography;
 using Mirror.Examples.Basic;
 using MFlight.Demo;
+using Mirror.RemoteCalls;
 
 public class PlaneDeath : NetworkBehaviour
 {
@@ -23,6 +24,10 @@ public class PlaneDeath : NetworkBehaviour
 
     public float deathMessageShowTime;
 
+    GameObject[] missiles;
+
+    public GameObject explosionPrefab;
+
     public void Start()
     {
         startRotation = this.transform.rotation;
@@ -31,11 +36,16 @@ public class PlaneDeath : NetworkBehaviour
 
     public void Die()
     {
+        CmdCreateExplosion(transform);
+
         if (hasAuthority == false)
         {
             Debug.Log("Not dying because I don't have authority");
             return;
         }
+
+        GameObject explosion = Instantiate(explosionPrefab, transform);
+        explosion.transform.SetParent(null);
 
         DoDieNextFrame = false;
         Debug.Log("Dying");
@@ -49,6 +59,14 @@ public class PlaneDeath : NetworkBehaviour
 
         deathMessage.SetActive(true);
         closeDeathMessageTime = Time.time + deathMessageShowTime;
+    }
+
+    [Command]
+    void CmdCreateExplosion(Transform pos)
+    {
+        GameObject go = Instantiate(explosionPrefab, pos.position, pos.rotation);
+        NetworkServer.Spawn(go);
+        go.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
     }
 
     public void Update()
@@ -81,12 +99,33 @@ public class PlaneDeath : NetworkBehaviour
             Die();
         }
 
-        
+        CmdCheckForMissiles(gameObject);  
+    }
+
+    [Command]
+    void CmdCheckForMissiles(GameObject plane)
+    {
+        missiles = GameObject.FindGameObjectsWithTag("Missile");
+        foreach (GameObject i in missiles)
+        {
+            if (Vector3.Distance(i.transform.position, plane.transform.position) < 200f)
+            {
+                NetworkServer.Destroy(i);
+                Destroy(i);
+                RpcDie();
+            }
+        }
+    }
+
+    [ClientRpc]
+    void RpcDie()
+    {
+        Die();
     }
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Bullet" | other.gameObject.tag == "Terrain" | other.gameObject.tag == "Missile")
+        if (other.gameObject.tag == "Bullet" | other.gameObject.tag == "Terrain")
         {
             Debug.Log("# Dying - plane");
             DoDieNextFrame = true;

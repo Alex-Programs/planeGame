@@ -6,6 +6,7 @@ using UnityEngine;
 public class cameraManager : MonoBehaviour
 {
     public GameObject controller;
+    
     void Update()
     {
         if (controller.GetComponent<MouseFlightController>().externallySetHasAuthority == false)

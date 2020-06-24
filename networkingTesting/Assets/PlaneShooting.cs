@@ -47,6 +47,8 @@ public class PlaneShooting : NetworkBehaviour
 
     public float missileDelay;
 
+    public GameObject explosion;
+
     // Update is called once per frame
     void Update()
     {
@@ -80,13 +82,13 @@ public class PlaneShooting : NetworkBehaviour
         {
             if (gunHeat < gunOverloadLimit)
             {
-                CmdSpawnBullet(firePointOne.transform.position + (firePointOne.transform.forward), firePointOne.transform.rotation, gameObject.GetComponent<Rigidbody>().velocity.magnitude, BulletForce, spread * 1.5f);
+                CmdSpawnBullet(firePointOne.transform.position + (firePointOne.transform.forward), firePointOne.transform.rotation, gameObject.GetComponent<Rigidbody>().velocity.magnitude, BulletForce, spread);
                 gunHeat = gunHeat + 1;
                 lastShotTime = Time.time;
             }
             if (gunHeat < gunOverloadLimit)
             {
-                CmdSpawnBullet(firePointTwo.transform.position + (firePointTwo.transform.forward), firePointTwo.transform.rotation, gameObject.GetComponent<Rigidbody>().velocity.magnitude, BulletForce, spread * 1.5f);
+                CmdSpawnBullet(firePointTwo.transform.position + (firePointTwo.transform.forward), firePointTwo.transform.rotation, gameObject.GetComponent<Rigidbody>().velocity.magnitude, BulletForce, spread);
                 gunHeat = gunHeat + 1;
                 lastShotTime = Time.time;
             }
@@ -99,7 +101,7 @@ public class PlaneShooting : NetworkBehaviour
         {
             if (gunHeat < gunOverloadLimit)
             {
-                CmdSpawnBullet(firePointThree.transform.position + (firePointThree.transform.forward), firePointThree.transform.rotation, gameObject.GetComponent<Rigidbody>().velocity.magnitude, BulletForce, CentralSpread * 1.5f);
+                CmdSpawnBullet(firePointThree.transform.position + (firePointThree.transform.forward), firePointThree.transform.rotation, gameObject.GetComponent<Rigidbody>().velocity.magnitude, BulletForce, CentralSpread);
                 nextCentralFireTime = Time.time + CentralFireRate;
                 gunHeat = gunHeat + 1;
                 lastShotTime = Time.time;
