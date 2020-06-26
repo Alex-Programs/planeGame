@@ -369,7 +369,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1252,11 +1252,11 @@ MonoBehaviour:
   syncInterval: 0.1
   firePoint: {fileID: 1909102484690853282}
   lockTextBox: {fileID: 8973025600586115483}
-  LockTime: 6.5
+  LockTime: 1
   haveLock: 0
   plane: {fileID: 3003426096657651064}
   target: {fileID: 0}
-  minimumDistance: 3000
+  minimumDistance: 2000
 --- !u!1 &3003426096848049558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,7 +1524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3429746340842188125}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -18.1, z: 46.6}
+  m_LocalPosition: {x: 0, y: -22.9, z: 98.4}
   m_LocalScale: {x: 0.125, y: 0.125, z: 0.125}
   m_Children: []
   m_Father: {fileID: 3003426096657651066}
@@ -1632,7 +1632,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

@@ -98,17 +98,16 @@ public class PlaneDeath : NetworkBehaviour
         {
             Die();
         }
-
-        CmdCheckForMissiles(gameObject);  
+        CmdCheckForMissiles();
     }
 
     [Command]
-    void CmdCheckForMissiles(GameObject plane)
+    void CmdCheckForMissiles()
     {
         missiles = GameObject.FindGameObjectsWithTag("Missile");
         foreach (GameObject i in missiles)
         {
-            if (Vector3.Distance(i.transform.position, plane.transform.position) < 200f)
+            if (Vector3.Distance(i.transform.position, gameObject.transform.position) < 200f)
             {
                 NetworkServer.Destroy(i);
                 Destroy(i);

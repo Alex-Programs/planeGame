@@ -38,7 +38,7 @@ public class bulletManager : NetworkBehaviour
     {
         float distance = Vector3.Distance(startLoc, transform.position);
 
-        //max distance on the x,y,z axes are 11k. Max diagonal, using a^2 + b+2 = c^2 is 15556. 15556 is the limit!
+        //max distance on the x,y,z axes is 11k. Max diagonal, using a^2 + b+2 = c^2 is 15556. 15556 is the limit!
         if (distance > 15556)
         {
             NetworkServer.Destroy(gameObject);

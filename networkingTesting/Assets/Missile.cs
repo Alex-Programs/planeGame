@@ -7,7 +7,6 @@ using Mirror;
 public class Missile : MonoBehaviour
 {
     public GameObject target;
-    public float explodeRange;
     public float speed;
     Rigidbody rb;
 
@@ -43,10 +42,7 @@ public class Missile : MonoBehaviour
     void FixedUpdate()
     {
         //this part does the turning
-        if (Vector3.Distance(transform.position, target.transform.position) > 500)
-        {
-            transform.LookAt(target.transform);
-        }
+        transform.LookAt(target.transform);
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
 
         Debug.Log("[]" + target.ToString());
