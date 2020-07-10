@@ -2,6 +2,18 @@
 
 This is a project I undertook over a week of lockdown, learning a lot more of unity. Warning, though - none of it is object oriented. It's a 3D game where you fly about using mouse-aim flight on a multiplayer server (dedicated or self hosted) shooting each other with guns and missiles.
 
+# Some images
+
+![image of the main menu](https://i.imgur.com/IOWSJT7.png)
+
+![Volumetric exhaust](https://i.imgur.com/lVWhUGs.png)
+
+![Just flying around](https://i.imgur.com/bQRrWTR.png)
+
+![Shooting](https://i.imgur.com/Zs5Ozmt.png?1)
+
+I don't have any images of multiplayer because I'm adding images a while after I finished the project and don't want to have to compile, send the build to my dad to play with me, get the antivirus to stop flagging it (it's a false positive, they hate that I haven't spent stupid amounts on code signing) and then play for some screenshots.  You can see that it works by running it (Unity 2019.3.13f1 Personal, no external dependencies) or by looking at the netcode (PlaneConnectionObject, PlaneDeath, and PlaneShooting all have a lot.)
+
 # What do you do?
 *  Fly about
 * Shoot other people
