@@ -1,6 +1,6 @@
 # Plane Game
 
-This is a project I undertook over a week of lockdown, learning a lot more of unity. Warning, though - none of it is object oriented. It's a 3D game where you fly about using mouse-aim flight on a multiplayer server (dedicated or self hosted) shooting each other with guns and missiles.
+This is a project I undertook over a week of lockdown, learning a lot more of unity. Warning, though - none of it is any good. It's a 3D game where you fly about using mouse-aim flight on a multiplayer server (dedicated or hybrid) shooting each other with guns and missiles.
 
 # Some images
 
